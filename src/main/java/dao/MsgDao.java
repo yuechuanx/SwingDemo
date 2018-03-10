@@ -57,8 +57,7 @@ public class MsgDao {
      * @throws SQLException
      */
     public void insertMsg(String sendId, String recevId, String title, String content) throws SQLException {
-        String sql = "INSERT INTO msg(sendId, recevId, tittle, content) VALUES (" + sendId +
-                ", " + recevId + ", " + title + ", " + content + ")";
+        String sql = "INSERT INTO msg(sendId, recevId, tittle, content) VALUES (?, ?, ?, ?)";
         DbUtil dbUtil = new DbUtil();
         Connection conn = null;
         PreparedStatement ps = null;
@@ -66,7 +65,11 @@ public class MsgDao {
         try {
             conn = dbUtil.getConn();
             ps = conn.prepareStatement(sql);
-            rs = ps.executeQuery();
+            ps.setString(1, sendId);
+            ps.setString(2, recevId);
+            ps.setString(3, title);
+            ps.setString(4, content);
+            ps.execute();
         } catch (Exception e) {
             e.printStackTrace();
         } finally {
