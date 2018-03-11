@@ -87,7 +87,8 @@ public class LoginFrame extends JFrame implements ActionListener{
                 LoginService loginService = new LoginService();
                 try {
                     if (passwd.equals(loginService.LoginService(id, role))) {
-                        new IndexFrame();
+                        hideLoginFrame();
+                        new IndexFrame(jtf_username.getText(), role);
                     } else {
                         showErrorDialog();
                     }
@@ -152,6 +153,10 @@ public class LoginFrame extends JFrame implements ActionListener{
         errorPanel.setFont(Fonts.InfoFont);
         JOptionPane.showMessageDialog(new JFrame().getContentPane(),
                 "请检查你的用户名和密码！", "系统信息",JOptionPane.ERROR_MESSAGE);
+    }
+
+    private void hideLoginFrame() {
+        this.setVisible(false);
     }
 
     public static void main(String[] args) {

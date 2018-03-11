@@ -8,7 +8,7 @@ import java.util.Objects;
 public class CrsEntity {
     private String kh;
     private String km;
-    private Integer xf;
+    private String xf;
 
     @Id
     @Column(name = "kh", nullable = false, length = 8)
@@ -32,11 +32,11 @@ public class CrsEntity {
 
     @Basic
     @Column(name = "xf", nullable = true)
-    public Integer getXf() {
+    public String getXf() {
         return xf;
     }
 
-    public void setXf(Integer xf) {
+    public void setXf(String xf) {
         this.xf = xf;
     }
 

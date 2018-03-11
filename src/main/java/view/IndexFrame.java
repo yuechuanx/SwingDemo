@@ -1,5 +1,6 @@
 package main.java.view;
 
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -7,19 +8,34 @@ import java.awt.event.ActionListener;
 
 public class IndexFrame extends JFrame implements ActionListener{
 
-    JLabel jlb_welcome = new JLabel("你跳转成功啦哈哈哈");
+    StuPanel stuPanel;
 
-    public IndexFrame() {
-        init();
+    public IndexFrame(String id, int role) {
+        init(id, role);
         setVisible(true);
         setResizable(false);
-        setBounds(200, 200, 580, 450);
+        setBounds(100, 100, 600, 480);
         setVisible(true);
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
     }
 
-    private void init() {
-        add(jlb_welcome);
+    private void init(String id, int role) {
+        if (role == 2) {
+            stuPanel = new StuPanel(id);
+            add(stuPanel);
+        } else if(role == 0) {
+            /**
+             * TODO
+             * @desc 实例化管理员面板
+             *
+             */
+        } else {
+            /**
+             * TODO
+             * @desc 实例化教师面板
+             *
+             */
+        }
     }
 
     @Override
@@ -28,6 +44,7 @@ public class IndexFrame extends JFrame implements ActionListener{
     }
 
     public static void main(String[] args) {
-        IndexFrame indexFrame = new IndexFrame();
+        IndexFrame frame = new IndexFrame("11111111", 2);
     }
+
 }

@@ -977,7 +977,7 @@
     </column>
     <column id="245" parent="231" name="xf">
       <Position>3</Position>
-      <DataType>int(11)|0</DataType>
+      <DataType>char(1)|0</DataType>
       <DefaultExpression>&apos;4&apos;</DefaultExpression>
       <ColumnKind>normal</ColumnKind>
     </column>

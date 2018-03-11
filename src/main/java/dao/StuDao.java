@@ -1,5 +1,6 @@
 package main.java.dao;
 
+import main.java.model.CrsEntity;
 import main.java.model.StuEntity;
 import main.java.util.DbUtil;
 
@@ -32,6 +33,7 @@ public class StuDao {
         }
 
     }
+
     public void DeleteCourse(String kh) throws SQLException {
         DbUtil dbUtil = new DbUtil();
         Connection conn = null;
@@ -73,6 +75,7 @@ public class StuDao {
             conn.close();
         }
     }
+
     public StuEntity getStuInfo(String xh) {
         StuEntity stuEntity = new StuEntity();
         DbUtil dbUtil = new DbUtil();
@@ -97,6 +100,56 @@ public class StuDao {
         }
 
         return stuEntity;
+    }
+
+    public List<CrsEntity> getChosenCourse(String xh) {
+        List<CrsEntity> lst = new ArrayList<CrsEntity>();
+        DbUtil dbUtil = new DbUtil();
+        Connection conn = null;
+        PreparedStatement ps = null;
+        ResultSet rs = null;
+        try {
+            // SELECT crs.kh, crs.km, crs.xf FROM CRS, STU, ELC WHERE ELC.kh = CRS.kh AND STU.xh=ELC.xh AND STU.xh=15121102;
+            String sql = "SELECT crs.kh, crs.km, crs.xf FROM CRS, STU, ELC WHERE ELC.kh = CRS.kh AND STU.xh=ELC.xh AND STU.xh=?";
+            conn = dbUtil.getConn();
+            ps = conn.prepareStatement(sql);
+            ps.setString(1, xh);
+            rs = ps.executeQuery();
+            while (rs.next()) {
+                CrsEntity crsEntity = new CrsEntity();
+                crsEntity.setKh(rs.getString("kh"));
+                crsEntity.setKm(rs.getString("km"));
+                crsEntity.setXf(rs.getString("xf"));
+                lst.add(crsEntity);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return lst;
+    }
+
+    public List<CrsEntity> getAllCourse() {
+        List<CrsEntity> lst = new ArrayList<CrsEntity>();
+        DbUtil dbUtil = new DbUtil();
+        Connection conn = null;
+        PreparedStatement ps = null;
+        ResultSet rs = null;
+        try {
+            String sql = "SELECT * FROM CRS";
+            conn = dbUtil.getConn();
+            ps = conn.prepareStatement(sql);
+            rs = ps.executeQuery();
+            while (rs.next()) {
+                CrsEntity crsEntity = new CrsEntity();
+                crsEntity.setKh(rs.getString("kh"));
+                crsEntity.setKm(rs.getString("km"));
+                crsEntity.setXf(rs.getString("xf"));
+                lst.add(crsEntity);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return lst;
     }
 }
 
