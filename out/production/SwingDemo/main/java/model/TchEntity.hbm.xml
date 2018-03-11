@@ -1,0 +1,24 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+
+    <class name="main.java.model.TchEntity" table="tch" schema="jsql">
+        <id name="gh">
+            <column name="gh" sql-type="char(8)" length="8"/>
+        </id>
+        <property name="xm">
+            <column name="xm" sql-type="varchar(10)" length="10" not-null="true"/>
+        </property>
+        <property name="xb">
+            <column name="xb" sql-type="char(2)" length="2" not-null="true"/>
+        </property>
+        <property name="csrq">
+            <column name="csrq" sql-type="char(10)" length="10" not-null="true"/>
+        </property>
+        <property name="mima">
+            <column name="mima" sql-type="varchar(12)" length="12" not-null="true"/>
+        </property>
+    </class>
+</hibernate-mapping>

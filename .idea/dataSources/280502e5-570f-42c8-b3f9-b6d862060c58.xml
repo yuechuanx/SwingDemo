@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<dataSource name="test@localhost">
+<dataSource name="jsql@localhost">
   <database-model serializer="dbm" rdbms="MYSQL" format-version="4.7">
     <root id="1">
       <DefaultCasing>lower/lower</DefaultCasing>
@@ -8,6 +8,7 @@
       <Collation>utf8_general_ci</Collation>
     </schema>
     <schema id="3" parent="1" name="jsql">
+      <Current>1</Current>
       <Visible>1</Visible>
       <Collation>utf8_general_ci</Collation>
     </schema>
@@ -21,8 +22,6 @@
       <Collation>utf8_general_ci</Collation>
     </schema>
     <schema id="7" parent="1" name="test">
-      <Current>1</Current>
-      <Visible>1</Visible>
       <Collation>utf8_general_ci</Collation>
     </schema>
     <collation id="8" parent="1" name="armscii8_bin">
@@ -934,101 +933,95 @@
     <table id="236" parent="3" name="tch">
       <Engine>InnoDB</Engine>
     </table>
-    <table id="237" parent="7" name="msg">
-      <Engine>InnoDB</Engine>
-    </table>
-    <table id="238" parent="7" name="user">
-      <Engine>InnoDB</Engine>
-    </table>
-    <column id="239" parent="230" name="gh">
+    <column id="237" parent="230" name="gh">
       <Position>1</Position>
       <DataType>char(8)|0</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="240" parent="230" name="xm">
+    <column id="238" parent="230" name="xm">
       <Position>2</Position>
       <DataType>varchar(10)|0</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="241" parent="230" name="xb">
+    <column id="239" parent="230" name="xb">
       <Position>3</Position>
       <DataType>char(2)|0</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="242" parent="230" name="csrq">
+    <column id="240" parent="230" name="csrq">
       <Position>4</Position>
       <DataType>char(10)|0</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="243" parent="230" name="mima">
+    <column id="241" parent="230" name="mima">
       <Position>5</Position>
       <DataType>varchar(12)|0</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <key id="244" parent="230" name="PRIMARY">
+    <key id="242" parent="230" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>gh</ColNames>
       <Primary>1</Primary>
     </key>
-    <column id="245" parent="231" name="kh">
+    <column id="243" parent="231" name="kh">
       <Position>1</Position>
       <DataType>char(8)|0</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="246" parent="231" name="km">
+    <column id="244" parent="231" name="km">
       <Position>2</Position>
       <DataType>varchar(16)|0</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="247" parent="231" name="xf">
+    <column id="245" parent="231" name="xf">
       <Position>3</Position>
       <DataType>int(11)|0</DataType>
       <DefaultExpression>&apos;4&apos;</DefaultExpression>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <key id="248" parent="231" name="PRIMARY">
+    <key id="246" parent="231" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>kh</ColNames>
       <Primary>1</Primary>
     </key>
-    <column id="249" parent="232" name="xh">
+    <column id="247" parent="232" name="xh">
       <Position>1</Position>
       <DataType>char(8)|0</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="250" parent="232" name="xq">
+    <column id="248" parent="232" name="xq">
       <Position>2</Position>
       <DataType>char(14)|0</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="251" parent="232" name="kh">
+    <column id="249" parent="232" name="kh">
       <Position>3</Position>
       <DataType>char(8)|0</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="252" parent="232" name="gh">
+    <column id="250" parent="232" name="gh">
       <Position>4</Position>
       <DataType>char(8)|0</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="253" parent="232" name="cj">
+    <column id="251" parent="232" name="cj">
       <Position>5</Position>
       <DataType>int(11)|0</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <index id="254" parent="232" name="kh">
+    <index id="252" parent="232" name="kh">
       <ColNames>kh</ColNames>
     </index>
-    <index id="255" parent="232" name="gh">
+    <index id="253" parent="232" name="gh">
       <ColNames>gh</ColNames>
     </index>
-    <key id="256" parent="232" name="PRIMARY">
+    <key id="254" parent="232" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>xh
 xq
@@ -1036,257 +1029,186 @@ kh
 gh</ColNames>
       <Primary>1</Primary>
     </key>
-    <foreign-key id="257" parent="232" name="elc_ibfk_3">
+    <foreign-key id="255" parent="232" name="elc_ibfk_3">
       <ColNames>xh</ColNames>
       <RefSchemaName>jsql</RefSchemaName>
       <RefTableName>stu</RefTableName>
       <RefColNames>xh</RefColNames>
     </foreign-key>
-    <foreign-key id="258" parent="232" name="elc_ibfk_2">
+    <foreign-key id="256" parent="232" name="elc_ibfk_2">
       <ColNames>kh</ColNames>
       <RefSchemaName>jsql</RefSchemaName>
       <RefTableName>crs</RefTableName>
       <RefColNames>kh</RefColNames>
     </foreign-key>
-    <foreign-key id="259" parent="232" name="elc_ibfk_1">
+    <foreign-key id="257" parent="232" name="elc_ibfk_1">
       <ColNames>gh</ColNames>
       <RefSchemaName>jsql</RefSchemaName>
       <RefTableName>tch</RefTableName>
       <RefColNames>gh</RefColNames>
     </foreign-key>
-    <column id="260" parent="233" name="id">
+    <column id="258" parent="233" name="id">
       <Position>1</Position>
       <DataType>int(11)|0</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>1</SequenceIdentity>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="261" parent="233" name="sendId">
+    <column id="259" parent="233" name="sendId">
       <Position>2</Position>
       <DataType>int(11)|0</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="262" parent="233" name="recevId">
+    <column id="260" parent="233" name="recevId">
       <Position>3</Position>
       <DataType>int(11)|0</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="263" parent="233" name="tittle">
+    <column id="261" parent="233" name="tittle">
       <Position>4</Position>
       <DataType>varchar(128)|0</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="264" parent="233" name="content">
+    <column id="262" parent="233" name="content">
       <Position>5</Position>
       <DataType>varchar(512)|0</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="265" parent="233" name="date">
+    <column id="263" parent="233" name="date">
       <Position>6</Position>
       <DataType>datetime|0</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <index id="266" parent="233" name="msg_id_uindex">
+    <index id="264" parent="233" name="msg_id_uindex">
       <ColNames>id</ColNames>
       <Unique>1</Unique>
     </index>
-    <key id="267" parent="233" name="PRIMARY">
+    <key id="265" parent="233" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>id</ColNames>
       <Primary>1</Primary>
     </key>
-    <key id="268" parent="233" name="msg_id_uindex">
+    <key id="266" parent="233" name="msg_id_uindex">
       <ColNames>id</ColNames>
       <UnderlyingIndexName>msg_id_uindex</UnderlyingIndexName>
     </key>
-    <column id="269" parent="234" name="xq">
+    <column id="267" parent="234" name="xq">
       <Position>1</Position>
       <DataType>char(14)|0</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="270" parent="234" name="kh">
+    <column id="268" parent="234" name="kh">
       <Position>2</Position>
       <DataType>char(8)|0</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="271" parent="234" name="gh">
+    <column id="269" parent="234" name="gh">
       <Position>3</Position>
       <DataType>char(8)|0</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="272" parent="234" name="sksj">
+    <column id="270" parent="234" name="sksj">
       <Position>4</Position>
       <DataType>varchar(11)|0</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <index id="273" parent="234" name="kh">
+    <index id="271" parent="234" name="kh">
       <ColNames>kh</ColNames>
     </index>
-    <index id="274" parent="234" name="gh">
+    <index id="272" parent="234" name="gh">
       <ColNames>gh</ColNames>
     </index>
-    <key id="275" parent="234" name="PRIMARY">
+    <key id="273" parent="234" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>xq
 kh
 gh</ColNames>
       <Primary>1</Primary>
     </key>
-    <foreign-key id="276" parent="234" name="opn_ibfk_1">
+    <foreign-key id="274" parent="234" name="opn_ibfk_1">
       <ColNames>kh</ColNames>
       <RefSchemaName>jsql</RefSchemaName>
       <RefTableName>crs</RefTableName>
       <RefColNames>kh</RefColNames>
     </foreign-key>
-    <foreign-key id="277" parent="234" name="opn_ibfk_2">
+    <foreign-key id="275" parent="234" name="opn_ibfk_2">
       <ColNames>gh</ColNames>
       <RefSchemaName>jsql</RefSchemaName>
       <RefTableName>tch</RefTableName>
       <RefColNames>gh</RefColNames>
     </foreign-key>
-    <column id="278" parent="235" name="xh">
+    <column id="276" parent="235" name="xh">
       <Position>1</Position>
       <DataType>char(8)|0</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="279" parent="235" name="xm">
+    <column id="277" parent="235" name="xm">
       <Position>2</Position>
       <DataType>varchar(10)|0</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="280" parent="235" name="xb">
+    <column id="278" parent="235" name="xb">
       <Position>3</Position>
       <DataType>char(2)|0</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="281" parent="235" name="csrq">
+    <column id="279" parent="235" name="csrq">
       <Position>4</Position>
       <DataType>char(10)|0</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="282" parent="235" name="jg">
+    <column id="280" parent="235" name="jg">
       <Position>5</Position>
       <DataType>varchar(6)|0</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="283" parent="235" name="mima">
+    <column id="281" parent="235" name="mima">
       <Position>6</Position>
       <DataType>varchar(12)|0</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <key id="284" parent="235" name="PRIMARY">
+    <key id="282" parent="235" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>xh</ColNames>
       <Primary>1</Primary>
     </key>
-    <column id="285" parent="236" name="gh">
+    <column id="283" parent="236" name="gh">
       <Position>1</Position>
       <DataType>char(8)|0</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="286" parent="236" name="xm">
+    <column id="284" parent="236" name="xm">
       <Position>2</Position>
       <DataType>varchar(10)|0</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="287" parent="236" name="xb">
+    <column id="285" parent="236" name="xb">
       <Position>3</Position>
       <DataType>char(2)|0</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="288" parent="236" name="csrq">
+    <column id="286" parent="236" name="csrq">
       <Position>4</Position>
       <DataType>char(10)|0</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="289" parent="236" name="mima">
+    <column id="287" parent="236" name="mima">
       <Position>5</Position>
       <DataType>varchar(12)|0</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <key id="290" parent="236" name="PRIMARY">
+    <key id="288" parent="236" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>gh</ColNames>
       <Primary>1</Primary>
-    </key>
-    <column id="291" parent="237" name="id">
-      <Position>1</Position>
-      <DataType>int(11)|0</DataType>
-      <NotNull>1</NotNull>
-      <SequenceIdentity>1</SequenceIdentity>
-      <ColumnKind>normal</ColumnKind>
-    </column>
-    <column id="292" parent="237" name="sendId">
-      <Position>2</Position>
-      <DataType>int(11)|0</DataType>
-      <ColumnKind>normal</ColumnKind>
-    </column>
-    <column id="293" parent="237" name="recevId">
-      <Position>3</Position>
-      <DataType>int(11)|0</DataType>
-      <ColumnKind>normal</ColumnKind>
-    </column>
-    <column id="294" parent="237" name="tittle">
-      <Position>4</Position>
-      <DataType>varchar(128)|0</DataType>
-      <ColumnKind>normal</ColumnKind>
-    </column>
-    <column id="295" parent="237" name="content">
-      <Position>5</Position>
-      <DataType>varchar(512)|0</DataType>
-      <ColumnKind>normal</ColumnKind>
-    </column>
-    <index id="296" parent="237" name="msg_id_uindex">
-      <ColNames>id</ColNames>
-      <Unique>1</Unique>
-    </index>
-    <key id="297" parent="237" name="PRIMARY">
-      <NameSurrogate>1</NameSurrogate>
-      <ColNames>id</ColNames>
-      <Primary>1</Primary>
-    </key>
-    <key id="298" parent="237" name="msg_id_uindex">
-      <ColNames>id</ColNames>
-      <UnderlyingIndexName>msg_id_uindex</UnderlyingIndexName>
-    </key>
-    <column id="299" parent="238" name="uid">
-      <Position>1</Position>
-      <DataType>int(11)|0</DataType>
-      <NotNull>1</NotNull>
-      <ColumnKind>normal</ColumnKind>
-    </column>
-    <column id="300" parent="238" name="name">
-      <Position>2</Position>
-      <DataType>varchar(20)|0</DataType>
-      <NotNull>1</NotNull>
-      <ColumnKind>normal</ColumnKind>
-    </column>
-    <column id="301" parent="238" name="passwd">
-      <Position>3</Position>
-      <DataType>varchar(20)|0</DataType>
-      <NotNull>1</NotNull>
-      <ColumnKind>normal</ColumnKind>
-    </column>
-    <index id="302" parent="238" name="user_uid_uindex">
-      <ColNames>uid</ColNames>
-      <Unique>1</Unique>
-    </index>
-    <key id="303" parent="238" name="PRIMARY">
-      <NameSurrogate>1</NameSurrogate>
-      <ColNames>uid</ColNames>
-      <Primary>1</Primary>
-    </key>
-    <key id="304" parent="238" name="user_uid_uindex">
-      <ColNames>uid</ColNames>
-      <UnderlyingIndexName>user_uid_uindex</UnderlyingIndexName>
     </key>
   </database-model>
 </dataSource>

@@ -1,22 +1,16 @@
 package main.java.dao;
 
 import main.java.model.Msg;
+import main.java.util.DbUtil;
 
 import java.sql.*;
 import java.util.*;
-
-
-
-/**
- * @function recevMsg()
- * @function sendMsg()
- */
 
 public class MsgDao {
     /**
      *
      * @param id -- the uid of user
-     * @return list -- the receive msg
+     * @return List<Msg> -- the receive msg
      * @throws SQLException
      */
     public List<Msg> getMsg(String id) throws SQLException {
@@ -32,8 +26,6 @@ public class MsgDao {
             ps = conn.prepareStatement(sql);
             rs = ps.executeQuery();
             if(rs == null) return Collections.emptyList();
-//            ResultSetMetaData rsmd = rs.getMetaData();
-//            int columnCount = rsmd.getColumnCount();
             while(rs.next()) {
                 Msg msgEntity = new Msg();
                 msgEntity.setTittle(rs.getString("tittle"));

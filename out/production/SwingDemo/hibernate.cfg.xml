@@ -6,7 +6,19 @@
   <session-factory>
     <property name="connection.url">jdbc:mysql://localhost:3306/test</property>
     <property name="connection.driver_class">com.mysql.jdbc.Driver</property>
-    <!-- table & entity mapping -->
+      <mapping class="main.java.model.AdmEntity"/>
+      <mapping resource="main/java/model/AdmEntity.hbm.xml"/>
+      <mapping class="main.java.model.CrsEntity"/>
+      <mapping resource="main/java/model/CrsEntity.hbm.xml"/>
+      <mapping resource="main/java/model/ElcEntity.hbm.xml"/>
+      <mapping class="main.java.model.ElcEntity"/>
+      <mapping class="main.java.model.OpnEntity"/>
+      <mapping resource="main/java/model/OpnEntity.hbm.xml"/>
+      <mapping class="main.java.model.StuEntity"/>
+      <mapping resource="main/java/model/StuEntity.hbm.xml"/>
+      <mapping class="main.java.model.TchEntity"/>
+      <mapping resource="main/java/model/TchEntity.hbm.xml"/>
+      <!-- table & entity mapping -->
 
 
     <!-- <property name="connection.username"/> -->

@@ -1,0 +1,23 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+
+    <class name="main.java.model.OpnEntity" table="opn" schema="jsql">
+        <composite-id mapped="true" class="main.java.model.OpnEntityPK">
+            <key-property name="xq">
+                <column name="xq" sql-type="char(14)" length="14"/>
+            </key-property>
+            <key-property name="kh">
+                <column name="kh" sql-type="char(8)" length="8"/>
+            </key-property>
+            <key-property name="gh">
+                <column name="gh" sql-type="char(8)" length="8"/>
+            </key-property>
+        </composite-id>
+        <property name="sksj">
+            <column name="sksj" sql-type="varchar(11)" length="11" not-null="true"/>
+        </property>
+    </class>
+</hibernate-mapping>

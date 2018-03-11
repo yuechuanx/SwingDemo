@@ -1,0 +1,18 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+
+    <class name="main.java.model.CrsEntity" table="crs" schema="jsql">
+        <id name="kh">
+            <column name="kh" sql-type="char(8)" length="8"/>
+        </id>
+        <property name="km">
+            <column name="km" sql-type="varchar(16)" length="16" not-null="true"/>
+        </property>
+        <property name="xf">
+            <column name="xf" sql-type="int(11)" not-null="true"/>
+        </property>
+    </class>
+</hibernate-mapping>
