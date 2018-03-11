@@ -1,62 +1,183 @@
 package main.java.view;
 
-import main.java.util.DbUtil;
+import main.java.dao.AdminDao;
+import main.java.model.AdmEntity;
+import main.java.model.StuEntity;
+import main.java.model.TchEntity;
+import main.java.service.LoginService;
 import main.java.util.Fonts;
 
 import javax.swing.*;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class LoginFrame extends JFrame implements ActionListener{
 
-    private JPanel bg_panel;
-    private JLabel jlb_id, jlb_passwd, jlb_tittle, jlb_status;
-    private JButton btn_reset, btn_signIn;
-    private JTextField usernameFiled;
-    private JPasswordField passwordField;
+    private JPanel panel;
+    private JLabel jlb_username, jlb_passwd, jlb_status, jlb_tittle;
+    private JButton btn_signIn, btn_reset;
+    private JTextField jtf_username;
+    private JPasswordField jpf_passwd;
     private JRadioButton jrb_stu, jrb_teacher, jrb_admin;
-    DbUtil dbUtil = new DbUtil();
+    private ButtonGroup roleButtonGroup;
 
+    private int role = 2; // 0-管理员， 1-教师， 2-学生
 
-    public LoginFrame() throws Exception {
-        bg_panel = new JPanel();
-        bg_panel.setLayout(null);
+    public LoginFrame() {
+        init();
+        setResizable(false);
+        setBounds(200, 200, 580, 450);
+        setVisible(true);
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+    }
+
+    private void init() {
+        panel = new JPanel();
+        panel.setLayout(null);
 
         jlb_tittle = new JLabel("欢迎进入学生成绩管理系统");
-        jlb_tittle.setBounds(70,10,500,40);
+        jlb_tittle.setBounds(70, 10, 500, 40);
         jlb_tittle.setFont(Fonts.titleFont);
-        bg_panel.add(jlb_tittle);
+        panel.add(jlb_tittle);
 
         jlb_status = new JLabel("");
-        jlb_status.setBounds(430,60,120,30);
+        jlb_status.setBounds(430, 60, 120, 30);
         jlb_status.setFont(Fonts.tipFont);
-        // TODOchange the name of tipFont;
-        bg_panel.add(jlb_status);
-        if(!dbUtil.getConn().isClosed())
-            jlb_status.setText("连接正常");
-        else
-            jlb_status.setText("无连接");
 
-/*        jtf_username = new JTextField(20);
-        jtf_username.setBounds(180,115,300,50);
-        jtf_username.setFont(Fonts.textFont);
-        bg_panel.add(jtf_username);
+        jlb_username = new JLabel("账号");
+        jlb_username.setBounds(80, 115, 100, 40);
+        jlb_username.setFont(Fonts.textFont);
+        panel.add(jlb_username);
 
-        jtf_passwd = new JTextField(20);
-        jtf_passwd.setBounds(180,195,300,50);
-        jtf_passwd.setFont(Fonts.textFont);
-        jtf_passwd.setE
-        bg_panel.add(jtf_passwd);
-
+        jlb_passwd = new JLabel("密码");
+        jlb_passwd.setBounds(80, 195,100, 40);
+        jlb_passwd.setFont(Fonts.textFont);
+        panel.add(jlb_passwd);
 
         jtf_username = new JTextField(20);
-        jtf_username.setBounds(387,202,173,30);
-        jtf_username.setFont(Fonts.Static);*/
+        jtf_username.setFont(Fonts.textFont);
+        jtf_username.setBounds(180, 115,300, 50);
+        panel.add(jtf_username);
 
+        jpf_passwd = new JPasswordField(20);
+        jpf_passwd.setFont(Fonts.textFont);
+        jpf_passwd.setBounds(180, 195, 300, 50);
+        panel.add(jpf_passwd);
+
+        btn_reset = new JButton("重置");
+        btn_reset.setBounds(110, 320, 150, 45);
+        btn_reset.setFont(Fonts.tipFont);
+        btn_reset.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+            jtf_username.setText("");
+            jpf_passwd.setText("");
+            }
+        });
+        panel.add(btn_reset);
+
+        btn_signIn = new JButton("登陆");
+        btn_signIn.setFont(Fonts.tipFont);
+        btn_signIn.setBounds(310, 320, 150, 45);
+        btn_signIn.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                String passwd = "";
+                passwd = String.valueOf(jpf_passwd.getPassword());
+                String id = "";
+                id = String.valueOf(jtf_username.getText());
+                LoginService loginService = new LoginService();
+                if(role == 0) {
+                    try {
+                        if(passwd.equals(loginService.LoginService(id, role))){
+                            new IndexFrame();
+                        } {
+
+                        }
+                    } catch (Exception e2) {
+                        e2.printStackTrace();
+                    }
+                }
+                else if(role == 1) {
+                    try {
+                        if(passwd.equals(loginService.LoginService(id, role))){
+                            new IndexFrame();
+                        } else {
+
+                        }
+                    } catch (Exception e2) {
+                        e2.printStackTrace();
+                    }
+                }
+                else {
+                    try {
+                        if(passwd.equals(loginService.LoginService(id, role))){
+                            new IndexFrame();
+                        } {
+
+                        }
+                    } catch (Exception e2) {
+                        e2.printStackTrace();
+                    }
+                }
+            }
+        });
+        panel.add(btn_signIn);
+
+        
+
+        jrb_admin = new JRadioButton("管理员");
+        jrb_admin.setFont(Fonts.tipFont);
+        jrb_admin.setBounds(117, 270, 100, 30);
+        jrb_admin.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                role = 0;
+                System.out.println(role);
+            }
+        });
+        panel.add(jrb_admin);
+
+        jrb_stu = new JRadioButton("学生", true);
+        jrb_stu.setFont(Fonts.tipFont);
+        jrb_stu.setBounds(244, 270, 100, 30);
+        jrb_stu.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                role = 2;
+                System.out.println(role);
+            }
+        });
+        panel.add(jrb_stu);
+
+        jrb_teacher = new JRadioButton("教师");
+        jrb_teacher.setFont(Fonts.tipFont);
+        jrb_teacher.setBounds(360, 270,  100 ,30);
+        jrb_teacher.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                role = 1;
+                System.out.println(role);
+            }
+        });
+        panel.add(jrb_teacher);
+        
+        roleButtonGroup = new ButtonGroup();
+        roleButtonGroup.add(jrb_admin);
+        roleButtonGroup.add(jrb_teacher);
+        roleButtonGroup.add(jrb_stu);
+        
+        add(panel);
     }
 
     @Override
     public void actionPerformed(ActionEvent e) {
 
     }
+
+    public static void main(String[] args) {
+        LoginFrame loginFrame = new LoginFrame();
+    }
 }
+

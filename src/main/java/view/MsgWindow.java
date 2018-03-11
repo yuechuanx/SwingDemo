@@ -25,7 +25,7 @@ public class MsgWindow extends JFrame implements ActionListener {
 
     MsgDao msgDao = new MsgDao();
 
-    public MsgWindow() {};
+    public MsgWindow() {}
 
     public MsgWindow(int x, int y, int w, int h) {
         init();

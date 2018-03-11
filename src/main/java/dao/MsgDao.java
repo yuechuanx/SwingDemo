@@ -7,8 +7,9 @@ import java.sql.*;
 import java.util.*;
 
 public class MsgDao {
+
     /**
-     *
+     * @function 获取所有信件
      * @param id -- the uid of user
      * @return List<Msg> -- the receive msg
      * @throws SQLException
