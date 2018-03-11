@@ -2,6 +2,7 @@ package main.java.dao;
 
 import main.java.model.AdmEntity;
 import main.java.model.StuEntity;
+import main.java.model.TchEntity;
 import main.java.util.DbUtil;
 
 import java.sql.Connection;
@@ -36,63 +37,31 @@ public class AdminDao {
         }
 
     }
-    public void AddTch(String gh, String xm, String xb, String csrq,
-                       String mima) throws SQLException {
-        DbUtil dbUtil = new DbUtil();
-        String sql = "insert into tch values ( ?, ?, ?, ?, ?)";
-        Connection conn = null;
-        PreparedStatement ps = null;
-        try {
-            conn = dbUtil.getConn();
-            ps = conn.prepareStatement(sql);
-            ps.setString(1, gh);
-            ps.setString(2, xm);
-            ps.setString(3, xb);
-            ps.setString(4, csrq);
-            ps.setString(5, mima);
-            ps.execute();
-        } catch (Exception e) {
-            e.printStackTrace();
-        } finally {
-            conn.close();
-        }
 
-    }
-    public void DeleteStu(String xh) throws SQLException {
+    public StuEntity getStuInfo(String xh) {
+        StuEntity stuEntity = new StuEntity();
         DbUtil dbUtil = new DbUtil();
         Connection conn = null;
         PreparedStatement ps = null;
         ResultSet rs = null;
-        String sql = "DELETE FROM stu WHERE stu.xh=?";
+        String sql = "select * from stu where stu.xh=?";
         try {
             conn = dbUtil.getConn();
             ps = conn.prepareStatement(sql);
-            ps.setString(1, xh);
-            ps.execute();
+            ps.setString(1,xh);
+            rs = ps.executeQuery();
+            while (rs.next()) {
+                stuEntity.setXh(rs.getString(1));
+                stuEntity.setXm(rs.getString(2));
+                stuEntity.setXb(rs.getString(3));
+                stuEntity.setCsrq(rs.getString(4));
+            }
         } catch (Exception e) {
             e.printStackTrace();
-        } finally {
-          conn.close();
         }
-    }
-    public void DeleteTch(String gh) throws SQLException {
-        DbUtil dbUtil = new DbUtil();
-        Connection conn = null;
-        PreparedStatement ps = null;
-        ResultSet rs = null;
-        String sql = "DELETE FROM tch WHERE tch.gh=?";
-        try {
-            conn = dbUtil.getConn();
-            ps = conn.prepareStatement(sql);
-            ps.setString(1, gh);
-            ps.execute();
-        } catch (Exception e) {
-            e.printStackTrace();
-        } finally {
-            conn.close();
-        }
-    }
 
+        return stuEntity;
+    }
 
     public List<StuEntity> getAllStuInfo() {
         List<StuEntity> lst = new ArrayList<StuEntity>();
@@ -122,6 +91,90 @@ public class AdminDao {
         return lst;
     }
 
+    public TchEntity getTchInfo(String gh) {
+        TchEntity tchEntity = new TchEntity();
+        DbUtil dbUtil = new DbUtil();
+        Connection conn = null;
+        PreparedStatement ps = null;
+        ResultSet rs = null;
+        String sql = "select * from tch where tch.gh=?";
+        try {
+            conn = dbUtil.getConn();
+            ps = conn.prepareStatement(sql);
+            ps.setString(1,gh);
+            rs = ps.executeQuery();
+            while (rs.next()) {
+                tchEntity.setGh(rs.getString(1));
+                tchEntity.setXm(rs.getString(2));
+                tchEntity.setXb(rs.getString(3));
+                tchEntity.setCsrq(rs.getString(4));
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return tchEntity;
+    }
+
+    public void AddTch(String gh, String xm, String xb, String csrq,
+                       String mima) throws SQLException {
+        DbUtil dbUtil = new DbUtil();
+        String sql = "insert into tch values ( ?, ?, ?, ?, ?)";
+        Connection conn = null;
+        PreparedStatement ps = null;
+        try {
+            conn = dbUtil.getConn();
+            ps = conn.prepareStatement(sql);
+            ps.setString(1, gh);
+            ps.setString(2, xm);
+            ps.setString(3, xb);
+            ps.setString(4, csrq);
+            ps.setString(5, mima);
+            ps.execute();
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            conn.close();
+        }
+
+    }
+
+    public void DeleteStu(String xh) throws SQLException {
+        DbUtil dbUtil = new DbUtil();
+        Connection conn = null;
+        PreparedStatement ps = null;
+        ResultSet rs = null;
+        String sql = "DELETE FROM stu WHERE stu.xh=?";
+        try {
+            conn = dbUtil.getConn();
+            ps = conn.prepareStatement(sql);
+            ps.setString(1, xh);
+            ps.execute();
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+          conn.close();
+        }
+    }
+
+    public void DeleteTch(String gh) throws SQLException {
+        DbUtil dbUtil = new DbUtil();
+        Connection conn = null;
+        PreparedStatement ps = null;
+        ResultSet rs = null;
+        String sql = "DELETE FROM tch WHERE tch.gh=?";
+        try {
+            conn = dbUtil.getConn();
+            ps = conn.prepareStatement(sql);
+            ps.setString(1, gh);
+            ps.execute();
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            conn.close();
+        }
+    }
+
 
 
     public void updateAdminInfo(String gh, String xm, String xb, String csrq)
@@ -146,6 +199,7 @@ public class AdminDao {
             conn.close();
         }
     }
+
     public void ChangeTeaCode(String gh, String mima)
             throws SQLException {
         DbUtil dbUtil = new DbUtil();
@@ -166,6 +220,7 @@ public class AdminDao {
             conn.close();
         }
     }
+
     public void ChangeStuCode(String xh, String mima)
             throws SQLException {
         DbUtil dbUtil = new DbUtil();
@@ -186,7 +241,8 @@ public class AdminDao {
             conn.close();
         }
     }
-    public AdmEntity getStuInfo(String gh) {
+
+    public AdmEntity getAdminInfo(String gh) {
         AdmEntity admEntity = new AdmEntity();
         DbUtil dbUtil = new DbUtil();
         Connection conn = null;
@@ -210,6 +266,7 @@ public class AdminDao {
 
         return admEntity;
     }
+
 
 }
 
