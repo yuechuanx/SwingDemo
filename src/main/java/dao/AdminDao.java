@@ -108,6 +108,30 @@ public class AdminDao {
         return lst;
     }
 
-    public void updateStu() {};
+    public void updateStuInfo(String xh, String xm, String xb, String crsq, String jg)
+            throws SQLException {
+        DbUtil dbUtil = new DbUtil();
+        Connection conn = null;
+        PreparedStatement ps = null;
+        ResultSet rs = null;
+        String sql = "UPDATE stu SET xm=?, xb=?, csrq=?, jg=? WHERE stu.xh=?";
+        try {
+            conn = dbUtil.getConn();
+            ps = conn.prepareStatement(sql);
+            ps.setString(1, xm);
+            ps.setString(2, xb);
+            ps.setString(3, crsq);
+            ps.setString(4, jg);
+            ps.setString(5, xh);
+            ps.execute();
 
-}
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            conn.close();
+        }
+    }
+
+};
+
+
