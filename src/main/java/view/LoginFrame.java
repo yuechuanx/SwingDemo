@@ -1,14 +1,9 @@
 package main.java.view;
 
-import main.java.dao.AdminDao;
-import main.java.model.AdmEntity;
-import main.java.model.StuEntity;
-import main.java.model.TchEntity;
 import main.java.service.LoginService;
 import main.java.util.Fonts;
 
 import javax.swing.*;
-import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -103,8 +98,6 @@ public class LoginFrame extends JFrame implements ActionListener{
         });
         panel.add(btn_signIn);
 
-        
-
         jrb_admin = new JRadioButton("管理员");
         jrb_admin.setFont(Fonts.tipFont);
         jrb_admin.setBounds(117, 270, 100, 30);
@@ -154,15 +147,16 @@ public class LoginFrame extends JFrame implements ActionListener{
 
     }
 
-    public static void main(String[] args) {
-        LoginFrame loginFrame = new LoginFrame();
-    }
-
     public void showErrorDialog() {
         errorPanel = new JOptionPane();
         errorPanel.setFont(Fonts.InfoFont);
         JOptionPane.showMessageDialog(new JFrame().getContentPane(),
                 "请检查你的用户名和密码！", "系统信息",JOptionPane.ERROR_MESSAGE);
     }
+
+    public static void main(String[] args) {
+        LoginFrame loginFrame = new LoginFrame();
+    }
+
 }
 
