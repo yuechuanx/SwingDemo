@@ -1,11 +1,14 @@
 package main.java.dao;
 
+import main.java.model.StuEntity;
 import main.java.util.DbUtil;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 public class AdminDao {
 
@@ -15,7 +18,6 @@ public class AdminDao {
         String sql = "insert into stu values (?, ?, ?, ?, ?, ?)";
         Connection conn = null;
         PreparedStatement ps = null;
-        ResultSet rs = null;
         try {
             conn = dbUtil.getConn();
             ps = conn.prepareStatement(sql);
@@ -33,4 +35,79 @@ public class AdminDao {
         }
 
     }
+
+    public void DeleteStu(String xh) throws SQLException {
+        DbUtil dbUtil = new DbUtil();
+        Connection conn = null;
+        PreparedStatement ps = null;
+        ResultSet rs = null;
+        String sql = "DELETE FROM stu WHERE stu.xh=?";
+        try {
+            conn = dbUtil.getConn();
+            ps = conn.prepareStatement(sql);
+            ps.setString(1, xh);
+            ps.execute();
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+          conn.close();
+        }
+    }
+
+    public StuEntity getStuInfo(String xh) {
+        StuEntity stuEntity = new StuEntity();
+        DbUtil dbUtil = new DbUtil();
+        Connection conn = null;
+        PreparedStatement ps = null;
+        ResultSet rs = null;
+        String sql = "select * from stu where stu.xh=?";
+        try {
+            conn = dbUtil.getConn();
+            ps = conn.prepareStatement(sql);
+            ps.setString(1, xh);
+            rs = ps.executeQuery();
+            while (rs.next()) {
+                stuEntity.setXh(rs.getString(1));
+                stuEntity.setXm(rs.getString(2));
+                stuEntity.setXb(rs.getString(3));
+                stuEntity.setCsrq(rs.getString(4));
+                stuEntity.setJg(rs.getString(5));
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return stuEntity;
+    }
+
+    public List<StuEntity> getAllStuInfo() {
+        List<StuEntity> lst = new ArrayList<StuEntity>();
+        DbUtil dbUtil = new DbUtil();
+        Connection conn = null;
+        PreparedStatement ps = null;
+        ResultSet rs = null;
+        String sql = "select * from stu";
+        try {
+            conn = dbUtil.getConn();
+            ps = conn.prepareStatement(sql);
+            rs = ps.executeQuery();
+            while (rs.next()) {
+                StuEntity stuEntity = new StuEntity();
+                stuEntity.setXh(rs.getString(1));
+                stuEntity.setXm(rs.getString(2));
+                stuEntity.setXb(rs.getString(3));
+                stuEntity.setCsrq(rs.getString(4));
+                stuEntity.setJg(rs.getString(5));
+                lst.add(stuEntity);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return lst;
+    }
+
+    public void updateStu() {};
+
 }
